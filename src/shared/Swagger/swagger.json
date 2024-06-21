@@ -1,0 +1,129 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API RM ODONTO",
+    "description": "Está api tem objetivo de informar como utilizar este servidor.",
+    "version": "1.0.0",
+    "contact": {
+      "email": "richard_madrigar99@hotmail.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3001",
+      "description": "API local"
+    },
+    {
+      "url": "https://whats-api-develop.up.railway.app",
+      "description": "API railway- DEV"
+    },
+    {
+      "url": "https://api-odonto-production.up.railway.app/",
+      "description": "API railway- PROD"
+    }
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Login",
+        "tags": ["Login/Session"],
+
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": " "
+              },
+              "examples": {
+                "Login": {
+                  "value": {
+                    "email": "root_dev_rm@hotmail.com",
+                    "password": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Email/Senha incorreto"
+          }
+        }
+      }
+    },
+    
+    "/sessions": {
+      "post": {
+        "summary": "Sessão do usuário",
+        "tags": ["Login/Session"],
+        "security": [{ "bearerAuth": [] }],
+
+        "responses": {
+          "401": {
+            "description": "Token não enviado, faça seu login novamente"
+          },
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+
+    "/acceptComponents": {
+      "get": {
+        "summary": "Pega lista de componentes aceito pelo whats",
+        "tags": ["acceptComponents"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/account": {
+      "post": {
+        "summary": "Criar conta para usuário",
+        "tags": ["User"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": " "
+              },
+              "examples": {
+                "Criar": {
+                  "value": {
+                    "name": "Richard Madrigar",
+                    "email": "richard_madrigar99@hotmail.com",
+                    "password": "Teste123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuário criado !"
+          }
+        }
+      }
+    }
+  },
+
+  "components": {
+    "schemas": {
+    },
+
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
