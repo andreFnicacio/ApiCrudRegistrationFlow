@@ -1,15 +1,14 @@
-## Account
-[x] - login (email,password)
-[x] - session
-[x] - criação de conta (name,email,password)
+## QUILOMBUS - API SOLID 
 
+This project is a template API designed to serve as a base for other applications. The API has been migrated from MongoDB with Mongoose to PostgreSQL using Prisma.
 
-## 
+## Installation and Execution
 
-[x] - rota para retornar todos obj aceito na api do whats
+To install the dependencies and run the application, follow these steps:
 
-preciso fazer uma rota para pegar um conjunto de obj 
-precisar fazer rota para editar conjunto de obj
-preciso fazer rota para deletar obj
+```bash
+npm install
+npm run dev
 
-preciso ao fazer crud enviar para a fila sqs
+#Docs
+Route: /api-docs
